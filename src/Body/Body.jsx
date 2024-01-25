@@ -3,7 +3,7 @@ import Col from "react-bootstrap/Col";
 
 function Body() {
   return (
-    <Row>
+    <Row className="body">
       <Col></Col>
     </Row>
   );

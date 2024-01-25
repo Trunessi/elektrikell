@@ -5,13 +5,19 @@ function TargetLow() {
   return (
     <>
       <Row>
-        <Col>TargetLow</Col>
+        <Col>Low price</Col>
       </Row>
       <Row>
-        <Col></Col>
+        <Col>
+          <p>The best time for this is from 0:00 to 1:00, which is left</p>
+          Clock
+        </Col>
       </Row>
       <Row>
-        <Col></Col>
+        <Col>
+          Then the price per kilowatt hour is 9.17 cents, which is 12% cheaper
+          than now
+        </Col>
       </Row>
     </>
   );
