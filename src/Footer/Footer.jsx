@@ -3,8 +3,15 @@ import TargetLow from "./TargetLow";
 import { DEFAULT_ACTIVE_BUTTONS } from "../Head";
 
 
-function Footer(props) {
-  return <div className="footer">{props.activePrice === DEFAULT_ACTIVE_BUTTONS ? <TargetLow/> : <TargetHigh/>}</div>;
+function Footer({activePrice, activeHour, setActiveHour}) {
+
+  return (
+  <div className="footer">
+    {activePrice === DEFAULT_ACTIVE_BUTTONS ? (
+  <TargetLow activeHour={activeHour} setActiveHour={setActiveHour}/>
+  ) : (
+  <TargetHigh/>
+  )}</div>);
 }
 
 export default Footer;
