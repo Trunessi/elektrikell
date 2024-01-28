@@ -1,7 +1,12 @@
-import Col from 'react-bootstrap/Col';
+import Col from "react-bootstrap/Col";
+import logo from './logo.svg'
 
 function Logo() {
-  return (<Col></Col>);
+  return (
+    <Col>
+      <img src={logo} alt="Logo"/>
+    </Col>
+  );
 }
 
 export default Logo;
