@@ -3,6 +3,7 @@ import Col from "react-bootstrap/Col";
 import Intervals from "./Intervals";
 
 function TargetLow(props) {
+ 
   return (
     <>
       <Row>
@@ -15,9 +16,7 @@ function TargetLow(props) {
       </Row>
       <Row>
         <Col>
-          <p>The best time for this is from 0:00 to 1:00, which is left</p>
-          Clock Then the price per kilowatt hour is 9.17 cents, which is 12%
-          cheaper than now
+         <h1>CountDown</h1>
         </Col>
       </Row>
     </>
