@@ -1,20 +1,21 @@
-const apiUrl = 'https://dashboard.elering.ee/api';
+const apiUrl = "https://dashboard.elering.ee/api";
 
-export const getPriceData = async () => {
-    const from = '2024-01-28T20:59:59.999Z';
-    const until = '2024-01-30T20:59:59.999Z';
+export const getPriceData = async (from, until) => {
+  // const from = '2024-01-28T20:59:59.999Z';
+  // const until = '2024-01-30T20:59:59.999Z';
 
-    const data = new URLSearchParams({
-        start: from,
-        end: until,
-    });
+  const data = new URLSearchParams({
+    start: from,
+    end: until,
+  });
 
-    const response = await fetch(`${apiUrl}/nps/price?${data}`);
+  const response = await fetch(`${apiUrl}/nps/price?${data}`);
 
-    return await response.json();
+  return await response.json();
 };
 
 export const getCurrentPrice = async () => {
-    const response = await fetch(`${apiUrl}/nps/price/EE/current`);
-    return await response.json();
+  const countryCode = "EE";
+  const response = await fetch(`${apiUrl}/nps/price/${countryCode}/current`);
+  return await response.json();
 };

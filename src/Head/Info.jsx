@@ -5,15 +5,18 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { PRICE_BUTTONS, BADGES } from "./constants";
 import Badge from 'react-bootstrap/Badge';
 import { getCurrentPrice } from '../services/apiService'
+import { mwToKw, addTax } from "../utils/priceFormats";
 
 
 function Info({ activePrice, setActivePrice }) {
-  const [currentPriceData, setCurrentPriceData] = useState(null);
+  const [currentPriceData, setCurrentPrice] = useState(0);
 
   useEffect(() => {
-    getCurrentPrice().then(({ data }) => 
-        setCurrentPriceData(data[0].price) 
-      );
+    (async() => {
+      const {data} = await getCurrentPrice(); 
+      
+      setCurrentPrice(addTax(mwToKw(data[0].price), "ee"));
+    })();
   }, []);
 
   return (
