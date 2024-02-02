@@ -9,3 +9,7 @@ export const convertToInputFormat = (dateTime) =>
 export const convertToRequestFormat = (dateTime) => moment(dateTime).format();
 
 export const currentTimeStamp = () => moment().minutes(0).seconds(0).unix();
+
+export const addHourToCurrentTSMl = () => +moment().add(1, 'hour');
+
+
