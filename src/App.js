@@ -29,6 +29,7 @@ function App() {
         activePrice={activePrice}
         activeHour={activeHour}
         setActiveHour={setActiveHour}
+        from={from} until={until}
       />
       <LeftSideBar
         show={showSideBar}

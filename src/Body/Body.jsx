@@ -20,11 +20,13 @@ function Body({ from, until }) {
 
   const renderDot = (line) => {
     const {
+      cx, cy,
       payload: { timestamp },
     } = line;
+    const cxN = cx +20;
 
     return timestamp === currentTimeStamp() ? (
-      <Dot {...line}>
+      <Dot {...line} cx={cxN}>
         <div></div>
       </Dot>
     ) : null;
