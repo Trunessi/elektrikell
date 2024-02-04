@@ -11,17 +11,20 @@ import {
   Dot,
   ResponsiveContainer,
   ReferenceArea,
+  ReferenceLine,
 } from "recharts";
 import { getPriceData } from "../services/apiService";
 import { chartDataConvertor } from "../utils";
 import { currentTimeStamp } from "../utils/dates";
 import { getLowPriceInterval } from "../utils/buildIntervals";
 import lodash from "lodash";
+import { meanValue } from "../utils/meanValue";
 
 function Body({ from, until, activeHour }) {
   const [priceData, setPriceData] = useState([]);
   const [x1, setX1] = useState(0);
   const [x2, setX2] = useState(0);
+  const [meanPrice, setMeanPrice] = useState(0);
 
   const renderDot = (line) => {
     const {
@@ -45,12 +48,15 @@ function Body({ from, until, activeHour }) {
 
   useEffect(() => {
     const lowPriceIntervals = getLowPriceInterval(priceData, activeHour);
+    setMeanPrice(meanValue(priceData));
+
 
     if (lowPriceIntervals.length) {
       setX1(lowPriceIntervals[0].index);
       setX2(lodash.last(lowPriceIntervals).index);
     }
   }, [priceData, activeHour]);
+
 
   return (
     <Row className="body">
@@ -68,6 +74,7 @@ function Body({ from, until, activeHour }) {
               dot={renderDot}
             />
             <ReferenceArea x1={x1} x2={x2} stroke="red" strokeOpacity={0.3} />
+            <ReferenceLine y={meanPrice}  stroke="red" strokeDasharray="3 3" />
           </LineChart>
         </ResponsiveContainer>
       </Col>
