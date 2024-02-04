@@ -50,13 +50,11 @@ function Body({ from, until, activeHour }) {
     const lowPriceIntervals = getLowPriceInterval(priceData, activeHour);
     setMeanPrice(meanValue(priceData));
 
-
     if (lowPriceIntervals.length) {
       setX1(lowPriceIntervals[0].index);
       setX2(lodash.last(lowPriceIntervals).index);
     }
   }, [priceData, activeHour]);
-
 
   return (
     <Row className="body">
@@ -73,8 +71,7 @@ function Body({ from, until, activeHour }) {
               stroke="#8884d8"
               dot={renderDot}
             />
-            <ReferenceArea x1={x1} x2={x2} stroke="red" strokeOpacity={0.3} />
-            <ReferenceLine y={meanPrice}  stroke="red" strokeDasharray="3 3" />
+            <ReferenceArea x1={x1} x2={x2} stroke="red" strokeOpacity={0.3} />            <ReferenceLine y={meanPrice}  stroke="red" strokeDasharray="3 3" />
           </LineChart>
         </ResponsiveContainer>
       </Col>
