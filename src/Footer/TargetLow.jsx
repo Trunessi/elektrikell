@@ -2,14 +2,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Intervals from "./Intervals";
 import Countdown from "react-countdown";
-import { addHourToCurrentTSMl } from "../utils/dates";
-
 
 function TargetLow(props) {
 
-  const countDownDate = addHourToCurrentTSMl();
+  const { bestUntil } = props;
 
-  return (
+    return (
     <>
       <Row>
         <Col>Low price</Col>
@@ -22,9 +20,10 @@ function TargetLow(props) {
       <Row>
         <Col>
           <h1>
-            <Countdown date={countDownDate}>
+            {bestUntil &&(
+            <Countdown date={bestUntil * 1000}>
               <div>The time is now!</div>
-            </Countdown>
+            </Countdown>)}
           </h1>
         </Col>
       </Row>

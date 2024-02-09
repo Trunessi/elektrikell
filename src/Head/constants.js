@@ -23,3 +23,5 @@ export const PRICE_BUTTONS = [
 ];
 
 export const DEFAULT_ACTIVE_BUTTONS = LOW;
+
+export const ERROR_MESSAGE = 'Could not fetch data from /nps/price/current';
