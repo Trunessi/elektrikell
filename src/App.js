@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import LeftSideBar from "./LeftSideBar";
 import { getDefaultFrom, getDefaultUntil } from "./utils/dates";
 import ErrorModal from "./ErrorModal";
+import Loading from "./Loading";
 
 function App() {
   const [activePrice, setActivePrice] = useState(DEFAULT_ACTIVE_BUTTONS);
@@ -16,6 +17,7 @@ function App() {
   const [until, setUntil] = useState(getDefaultUntil());
   const [errorMessage, setErrorMessage] = useState(null);
   const [bestUntil, setBestUntil] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleCloseSideBar = () => setShowSiteBar(false);
   const handleOpenSideBar = () => setShowSiteBar(true);
@@ -28,12 +30,18 @@ function App() {
         handleOpenSideBar={handleOpenSideBar}
         setErrorMessage={setErrorMessage}
       />
+      {isLoading && (
+        <h1 className={"d-flex justify-content-center"}>
+          <Loading /> Loading...
+        </h1>
+      )}
       <Body
         activeHour={activeHour}
         from={from}
         until={until}
         setErrorMessage={setErrorMessage}
         setBestUntil={setBestUntil}
+        setIsLoading={setIsLoading}
       />
       <Footer
         activePrice={activePrice}
