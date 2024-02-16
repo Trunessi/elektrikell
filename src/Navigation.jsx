@@ -25,7 +25,7 @@ function Navigation() {
             About me
           </Link>
           <Link to="/about/gamma" className="nav-link">
-            Gamma intelligence
+            Gamma Intelligence
           </Link>
         </Nav>
       </Container>
