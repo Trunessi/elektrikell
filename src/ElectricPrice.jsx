@@ -8,15 +8,16 @@ import LeftSideBar from "./LeftSideBar";
 import ErrorModal from "./ErrorModal";
 import Loading from "./Loading";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setActiveHour } from "./services/stateService";
+import { setErrorMessage } from "./services/stateService";
 
 function ElectricPrice() {
   const params = useParams();
   const dispatch = useDispatch();
+  const errorMessage = useSelector((state) => state.main.errorMessage);
 
   const [showSideBar, setShowSiteBar] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
   const [bestUntil, setBestUntil] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -31,7 +32,6 @@ function ElectricPrice() {
     <Container>
       <Head
         handleOpenSideBar={handleOpenSideBar}
-        setErrorMessage={setErrorMessage}
       />
       {isLoading && (
         <h1 className={"d-flex justify-content-center"}>
@@ -39,7 +39,6 @@ function ElectricPrice() {
         </h1>
       )}
       <Body
-        setErrorMessage={setErrorMessage}
         setBestUntil={setBestUntil}
         setIsLoading={setIsLoading}
       />
@@ -49,8 +48,7 @@ function ElectricPrice() {
 
       <ErrorModal
         show={!!errorMessage}
-        handleClose={() => setErrorMessage(null)}
-        errorMessage={errorMessage}
+        handleClose={() => dispatch(setErrorMessage(null))}
       />
     </Container>
   );
