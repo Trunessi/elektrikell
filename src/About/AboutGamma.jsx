@@ -10,7 +10,7 @@ function AboutGamma() {
         modeling.
       </p>
       <p>
-        <a href="https://www.gammatest.net/index.php"> GAMMA site</a>
+        <a href="https://www.gammatest.net/index.php"> Gamma Intelligence page</a>
       </p>
     </div>
   );
