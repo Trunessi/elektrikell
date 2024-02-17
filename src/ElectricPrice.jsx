@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./App.scss";
 import Container from "react-bootstrap/Container";
 import Body from "./Body";
@@ -15,43 +15,18 @@ function ElectricPrice() {
   const params = useParams();
   const dispatch = useDispatch();
 
-  const [showSideBar, setShowSiteBar] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [bestUntil, setBestUntil] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const handleCloseSideBar = () => setShowSiteBar(false);
-  const handleOpenSideBar = () => setShowSiteBar(true);
-
   useEffect(() => {
-    if(params.hours) dispatch(setActiveHour(+params.hours));
+    if (params.hours) dispatch(setActiveHour(+params.hours));
   }, [params, dispatch]);
 
   return (
     <Container>
-      <Head
-        handleOpenSideBar={handleOpenSideBar}
-        setErrorMessage={setErrorMessage}
-      />
-      {isLoading && (
-        <h1 className={"d-flex justify-content-center"}>
-          <Loading /> Loading...
-        </h1>
-      )}
-      <Body
-        setErrorMessage={setErrorMessage}
-        setBestUntil={setBestUntil}
-        setIsLoading={setIsLoading}
-      />
-      <Footer bestUntil={bestUntil} />
-
-      <LeftSideBar show={showSideBar} handleClose={handleCloseSideBar} />
-
-      <ErrorModal
-        show={!!errorMessage}
-        handleClose={() => setErrorMessage(null)}
-        errorMessage={errorMessage}
-      />
+      <Head />
+      <Loading />
+      <Body />
+      <Footer />
+      <LeftSideBar />
+      <ErrorModal />
     </Container>
   );
 }
