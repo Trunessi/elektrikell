@@ -10,6 +10,7 @@ import Loading from "./Loading";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setActiveHour } from "./services/stateService";
+import ElectricPriceProvider from "./contexts/ElectricPriceContext";
 
 function ElectricPrice() {
   const params = useParams();
@@ -20,14 +21,16 @@ function ElectricPrice() {
   }, [params, dispatch]);
 
   return (
-    <Container>
-      <Head />
-      <Loading />
-      <Body />
-      <Footer />
-      <LeftSideBar />
-      <ErrorModal />
-    </Container>
+    <ElectricPriceProvider>
+      <Container>
+        <Head />
+        <Loading />
+        <Body />
+        <Footer />
+        <LeftSideBar />
+        <ErrorModal />
+      </Container>
+    </ElectricPriceProvider>
   );
 }
 
