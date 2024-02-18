@@ -53,7 +53,7 @@ function Info() {
         </ButtonGroup>
       </Col>
       <Col className="text-end">
-        <h2>{values.currentPriceData}</h2>
+        <h2>{values.currentPrice}</h2>
         <div>cent / kilowatt-hour</div>
       </Col>
     </>
