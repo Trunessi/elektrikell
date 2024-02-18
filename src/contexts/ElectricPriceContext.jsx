@@ -4,13 +4,16 @@ export const ElectricPriceContext = createContext(null);
 
 function ElectricPriceProvider({ children }) {
   const [averagePrice, setAveragePrice] = useState(0);
+  const [currentPriceData, setCurrentPrice] = useState(0);
 
   const value = {
     values: {
       averagePrice,
+      currentPriceData,
     },
     actions: {
       setAveragePrice,
+      setCurrentPrice,
     },
   };
 

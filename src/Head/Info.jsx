@@ -2,24 +2,22 @@ import { useEffect, useState, useContext } from "react";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-import { PRICE_BUTTONS, BADGES } from "./constants";
-import Badge from "react-bootstrap/Badge";
+import { PRICE_BUTTONS } from "./constants";
 import { getCurrentPrice } from "../services/apiService";
 import { mwToKw, addTax } from "../utils/priceFormats";
 import { ERROR_MESSAGE } from "./constants";
 import { useSelector, useDispatch } from "react-redux";
 import { setActivePrice, setErrorMessage } from "../services/stateService";
 import { ElectricPriceContext } from "../contexts/ElectricPriceContext";
+import PriceBadge from "./PriceBadge";
 
 function Info() {
   const dispatch = useDispatch();
 
-  const { values } = useContext(ElectricPriceContext);
-  console.log('values.averagePrice', values.averagePrice);
+  const { actions, values } = useContext(ElectricPriceContext);
 
-  const [currentPriceData, setCurrentPrice] = useState(0);
   const activePrice = useSelector((state) => state.main.activePrice);
-
+ 
   useEffect(() => {
     (async () => {
       try {
@@ -27,7 +25,7 @@ function Info() {
 
         if (!success) throw new Error();
 
-        setCurrentPrice(addTax(mwToKw(data[0].price), "ee"));
+        actions.setCurrentPrice(addTax(mwToKw(data[0].price), "ee"));
       } catch {
         dispatch(setErrorMessage(ERROR_MESSAGE));
       }
@@ -38,7 +36,7 @@ function Info() {
     <>
       <Col>
         <div>The current price of electricity is</div>
-        <Badge bg={BADGES[0].name}>{BADGES[0].id}</Badge>
+        <PriceBadge/>
       </Col>
       <Col>
         <ButtonGroup>
@@ -55,7 +53,7 @@ function Info() {
         </ButtonGroup>
       </Col>
       <Col className="text-end">
-        <h2>{currentPriceData}</h2>
+        <h2>{values.currentPriceData}</h2>
         <div>cent / kilowatt-hour</div>
       </Col>
     </>
