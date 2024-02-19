@@ -14,7 +14,7 @@ import { ElectricPriceContext } from "../contexts/ElectricPriceContext";
 function Info() {
   const dispatch = useDispatch();
 
-  const { values, actions } = useContext(ElectricPriceContext);
+  const { values, actions: { setCurrentPrice } } = useContext(ElectricPriceContext);
 
   const activePrice = useSelector((state) => state.main.activePrice);
 
@@ -25,12 +25,12 @@ function Info() {
 
         if (!success) throw new Error();
 
-        actions.setCurrentPrice(addTax(mwToKw(data[0].price), "ee"));
+        setCurrentPrice(addTax(mwToKw(data[0].price), "ee"));
       } catch {
         dispatch(setErrorMessage(ERROR_MESSAGE));
       }
     })();
-  }, [dispatch, actions]);
+  }, [dispatch, setCurrentPrice]);
 
   return (
     <>
