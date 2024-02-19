@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/elektrikell/static/css/main.d6fa8b62.css",
-    "main.js": "/elektrikell/static/js/main.36fa03ff.js",
+    "main.js": "/elektrikell/static/js/main.18d8a909.js",
     "static/media/electriclock.svg": "/elektrikell/static/media/electriclock.ab8e0a030441722ce1a4674e5668e8df.svg",
     "index.html": "/elektrikell/index.html",
     "main.d6fa8b62.css.map": "/elektrikell/static/css/main.d6fa8b62.css.map",
-    "main.36fa03ff.js.map": "/elektrikell/static/js/main.36fa03ff.js.map"
+    "main.18d8a909.js.map": "/elektrikell/static/js/main.18d8a909.js.map"
   },
   "entrypoints": [
     "static/css/main.d6fa8b62.css",
-    "static/js/main.36fa03ff.js"
+    "static/js/main.18d8a909.js"
   ]
 }
